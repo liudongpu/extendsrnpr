@@ -67,7 +67,17 @@ public class CloubSave {
 	static File destFile = new File("test");
 	
 	
-	public void uploadDir(String sBaeeDir,String sFatherPath)
+	public void upload(String sBucket,String sAccKey,String sSecKey,String sBaeeDir,String sFatherPath)
+	{
+		bucket=sBucket;
+		accessKey=sAccKey;
+		secretKey=sSecKey;
+		uploadDir(sBaeeDir,sFatherPath);
+	}
+	
+	
+	
+	private void uploadDir(String sBaeeDir,String sFatherPath)
 	{
 		
 		
@@ -83,7 +93,7 @@ public class CloubSave {
 		for(File f :(Collection<File>)FileUtils.listFiles(fBaseDir, null, true))
 		{
 			
-			log.info(f.getAbsolutePath());
+			//log.info(f.getAbsolutePath());
 			
 			String sFullPath=f.getAbsolutePath();
 			
@@ -95,15 +105,32 @@ public class CloubSave {
 			//log.info(sUploadName);
 			boolean bUpload=true;
 			
-			
+			try
+			{
 			ObjectMetadata objectMetadata = baiduBCS.getObjectMetadata(bucket, sUploadName).getResult();
-			log.info(objectMetadata);
-			
-			doChecksum(f);
+			//log.info(objectMetadata);
 			
 			
 			
+			if(objectMetadata.getUserMetadata().containsKey("crc32"))
+			{
+				String sLCrc32=doChecksum(f);
+				if(sLCrc32.equals(objectMetadata.getUserMetadata().get("crc32")))
+				{
+					bUpload=false;
+				}
+			}
 			
+			}
+			catch(Exception e)
+			{
+				
+			}
+			
+			if(bUpload)
+			{
+				log.info(bUpload);
+			}
 			
 			//uploadFile(baiduBCS, f, sUploadName);
 			
