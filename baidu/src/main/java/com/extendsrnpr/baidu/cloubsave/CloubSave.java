@@ -86,7 +86,7 @@ public class CloubSave {
 		// baiduBCS.setDefaultEncoding("GBK");
 		baiduBCS.setDefaultEncoding("UTF-8"); // Default UTF-8
 		
-		
+	
 		
 		File fBaseDir=new File(sBaeeDir);
 	
@@ -129,7 +129,14 @@ public class CloubSave {
 			
 			if(bUpload)
 			{
-				log.info(bUpload);
+				log.info("upload   "+f.getAbsolutePath());
+				
+				uploadFile(baiduBCS, f, sUploadName);
+				
+			}
+			else
+			{
+				log.info("skip   "+f.getAbsolutePath());
 			}
 			
 			//uploadFile(baiduBCS, f, sUploadName);
@@ -154,8 +161,8 @@ public class CloubSave {
 		request.setMetadata(metadata);
 		BaiduBCSResponse<ObjectMetadata> response = baiduBCS.putObject(request);
 		ObjectMetadata objectMetadata = response.getResult();
-		log.info("x-bs-request-id: " + response.getRequestId());
-		log.info(objectMetadata);
+		//log.info("x-bs-request-id: " + response.getRequestId());
+		//log.info(objectMetadata);
 	}
 	
 	private static String doChecksum(File fileName) {
