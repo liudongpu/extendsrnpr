@@ -51,10 +51,11 @@ import com.baidu.inf.iis.bcs.request.ListObjectRequest;
 import com.baidu.inf.iis.bcs.request.PutObjectRequest;
 import com.baidu.inf.iis.bcs.request.PutSuperfileRequest;
 import com.baidu.inf.iis.bcs.response.BaiduBCSResponse;
+import com.srnpr.zapcom.basemodel.MDataMap;
 
 public class CloubSave {
 
-	
+	public final static MDataMap mMap=new MDataMap();
 	
 	private static final Log log = LogFactory.getLog(CloubSave.class);
 	// ----------------------------------------
@@ -96,6 +97,13 @@ public class CloubSave {
 			//log.info(f.getAbsolutePath());
 			
 			String sFullPath=f.getAbsolutePath();
+			if(mMap.containsKey(sFullPath))
+			{
+				continue;
+			}else
+			{
+				mMap.put(sFullPath, sFullPath);
+			}
 			
 			String sSubPath=StringUtils.substringAfter(sFullPath, sBaeeDir);
 			
