@@ -12,22 +12,23 @@ public class BufferBgpm extends ThreadTestHelper {
 	@Test
 	public void test() {
 
-		muliThread(20);
+		muliThread(1);
 
 	}
 
 	public void run() {
 		
 		CloubSave cloubSave = new CloubSave();
-		/*
+		
 		cloubSave.upload("srnprresources", "7b4a7c454a931986fb95c91af4fbcc25",
 				"73E940968b97f6a1780b7f2c91b03846",
 				"D:\\WebSite\\yinfo\\uploadfiles\\", "/staticfiles/");
-		*/
+		
+		/*
 		cloubSave.upload("srnprresources", "7b4a7c454a931986fb95c91af4fbcc25",
 				"73E940968b97f6a1780b7f2c91b03846",
 				"D:\\WebSite\\yinfo\\resources\\", "/resources/");
-		
+		*/
 	}
 
 }

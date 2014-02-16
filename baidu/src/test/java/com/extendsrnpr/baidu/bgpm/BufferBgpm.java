@@ -19,14 +19,15 @@ public class BufferBgpm extends ThreadTestHelper {
 	public void run() {
 		
 		CloubSave cloubSave = new CloubSave();
-		/*
+		
 		cloubSave.upload("bgpmfile", "F184ffd5245075ebbd784750db8cd880",
 				"5443864493d40964477d89e6f795f16c",
 				"D:\\WebSite\\bgpm\\zzero\\", "/zzero/");
-				*/
+				
+		/*
 		cloubSave.upload("bgpmfile", "F184ffd5245075ebbd784750db8cd880",
 				"5443864493d40964477d89e6f795f16c",
-				"D:\\WebSite\\bgpm\\Photo\\", "/Photo/");
+				"D:\\WebSite\\bgpm\\Photo\\", "/Photo/");*/
 		
 	}
 
